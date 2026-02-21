@@ -4,12 +4,20 @@ import retrato from "../../assets/images/retrato-profesional.png"
 const { Title, Paragraph } = Typography
 
 export default function Hero() {
+
+  const handleWhatsApp = () => {
+    const phone = "573001234567" // ← reemplaza
+    const message = "Hola, quiero agendar una cita"
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`
+    window.open(url, "_blank")
+  }
+
   return (
     <Row
       align="bottom"
       justify="center"
       style={{
-        height: "clamp(420px, 70vh, 720px)",   // ✅ altura responsive
+        height: "clamp(420px, 70vh, 720px)",
         position: "relative",
         overflow: "hidden"
       }}
@@ -34,10 +42,11 @@ export default function Hero() {
         style={{
           zIndex: 2,
           textAlign: "center",
-          paddingBottom: 48   // ✅ control limpio del spacing
+          paddingBottom: 48
         }}
       >
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+
           <Title style={{ color: "white", marginBottom: 0 }}>
             Recupera tu movimiento
           </Title>
@@ -47,22 +56,20 @@ export default function Hero() {
             recuperación funcional y calidad de vida.
           </Paragraph>
 
-          <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
+          <div style={{ display: "flex", justifyContent: "center" }}>
             <Button
               type="primary"
               size="large"
-              style={{ background: "#4a9b6f", borderColor: "#4a9b6f" }}
+              style={{
+                background: "#4a9b6f",
+                borderColor: "#4a9b6f"
+              }}
+              onClick={handleWhatsApp}
             >
               Agenda tu cita
             </Button>
-
-            <Button
-              size="large"
-              style={{ color: "white", borderColor: "white", background: "transparent" }}
-            >
-              Ver servicios
-            </Button>
           </div>
+
         </div>
       </Col>
     </Row>
