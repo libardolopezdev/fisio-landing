@@ -9,15 +9,19 @@ export default function Home() {
   return (
     <div style={{ width: "100%", display: "flex", flexDirection: "column" }}>
       <Hero />
+
       <FadeInSection delay={0}>
-        <TrustSection />
-      </FadeInSection>
-      <FadeInSection delay={0.1}>
         <ServicesSection />
       </FadeInSection>
+
+      <FadeInSection delay={0.1}>
+        <TrustSection />
+      </FadeInSection>
+
       <FadeInSection delay={0.1}>
         <TikTokSection />
       </FadeInSection>
+
       <FadeInSection delay={0.1}>
         <CTASection />
       </FadeInSection>
