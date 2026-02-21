@@ -12,6 +12,8 @@ body {
     'Helvetica Neue', sans-serif;
   color: #1F2937;
   background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Enlaces */
@@ -20,13 +22,21 @@ a {
   text-decoration: none;
 }
 
+/* Imágenes optimizadas */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 /* Ant Design overrides */
 .ant-layout {
   background: #ffffff;
 }
 
 .ant-layout-header {
-  padding: 0 32px;
+  padding: 0 !important;
+  height: auto !important;
+  line-height: normal !important;
 }
 
 .ant-menu-horizontal {
@@ -35,13 +45,13 @@ a {
 
 /* Botón primario */
 .ant-btn-primary {
-  background-color: #2E7D6F;
-  border-color: #2E7D6F;
+  background-color: #2E7D6F !important;
+  border-color: #2E7D6F !important;
 }
 
 .ant-btn-primary:hover {
-  background-color: #25685D;
-  border-color: #25685D;
+  background-color: #25685D !important;
+  border-color: #25685D !important;
 }
 
 /* Cards */
@@ -53,4 +63,9 @@ a {
 .ant-layout-footer {
   background: #f9fafb;
   color: #6B7280;
+}
+
+/* Scroll suave */
+html {
+  scroll-behavior: smooth;
 }

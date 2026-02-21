@@ -1,36 +1,63 @@
-import retrato from "../../assets/images/retrato-profesional.png";
+import { Row, Col, Typography, Button } from "antd"
+import retrato from "../../assets/images/retrato-profesional.png"
+
+const { Title, Paragraph } = Typography
 
 export default function Hero() {
   return (
-    <section className="w-full">
+    <Row
+      align="middle"
+      justify="center"
+      style={{
+        minHeight: "85vh",
+        position: "relative",
+        overflow: "hidden"
+      }}
+    >
+      <img
+        src={retrato}
+        alt="Fisioterapeuta Camila Suarez"
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          objectPosition: "center 0%",
+          filter: "brightness(0.6)"
+        }}
+      />
 
-      <div className="relative">
+      <Col
+        xs={22}
+        md={14}
+        style={{
+          zIndex: 2,
+          textAlign: "center",
+          paddingTop: "80vh",    // ← sube el texto hacia abajo
+          paddingBottom: 40
+        }}
+      >
+        <div style={{ display: "flex", flexDirection: "column", gap: 12, width: "100%" }}>
+          <Title style={{ color: "white", marginBottom: 0, fontSize: 32 }}>  {/* ← más pequeño */}
+            Recupera tu movimiento
+          </Title>
 
-        <img
-          src={retrato}
-          alt="Fisioterapeuta Camila Suarez"
-          className="w-full h-[420px] object-cover"
-        />
+          <Paragraph style={{ color: "white", fontSize: 15 }}>  {/* ← más pequeño */}
+            Atención fisioterapéutica personalizada enfocada en tu bienestar,
+            recuperación funcional y calidad de vida.
+          </Paragraph>
 
-        {/* Overlay profesional */}
-        <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-
-          <div className="text-center text-white px-4">
-
-            <h1 className="text-3xl md:text-5xl font-bold mb-3">
-              Recupera tu movimiento
-            </h1>
-
-            <p className="max-w-xl mx-auto text-lg">
-              Atención fisioterapéutica personalizada para tu bienestar físico.
-            </p>
-
+          <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
+            <Button type="primary" size="large" style={{ background: "#4a9b6f", borderColor: "#4a9b6f" }}>
+              Agenda tu cita
+            </Button>
+            <Button size="large" style={{ color: "white", borderColor: "white", background: "transparent" }}>
+              Ver servicios
+            </Button>
           </div>
-
         </div>
-
-      </div>
-
-    </section>
-  );
+      </Col>
+    </Row>
+  )
 }

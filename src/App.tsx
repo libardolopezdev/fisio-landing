@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Services from './pages/Services'
 import Contact from './pages/Contact'
 import About from './pages/About'
+import WhatsAppButton from './components/common/WhatsAppButton'
 
 const { Content, Footer } = Layout
 
@@ -13,9 +14,10 @@ function App() {
   return (
     <BrowserRouter>
       <Layout style={{ minHeight: '100vh' }}>
+
         <HeaderBar />
 
-        <Content style={{ padding: '24px' }}>
+        <Content>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/servicios" element={<Services />} />
@@ -25,8 +27,11 @@ function App() {
         </Content>
 
         <Footer style={{ textAlign: 'center' }}>
-          © {new Date().getFullYear()} FisioSalud · Todos los derechos reservados
+          © {new Date().getFullYear()} Ft. Camila Suarez · Todos los derechos reservados
         </Footer>
+
+        <WhatsAppButton />
+
       </Layout>
     </BrowserRouter>
   )
