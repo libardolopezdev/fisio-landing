@@ -72,7 +72,7 @@ export default function About() {
       <Row gutter={[24, 24]} justify="center" style={{ marginBottom: 64 }}>
         {[
           { number: "7+", label: "Años de experiencia" },
-          { number: "200+", label: "Pacientes atendidos" },
+          { number: "20.000+", label: "Pacientes atendidos" },
           { number: "2", label: "Universidades" },
           { number: "4+", label: "Certificaciones" }
         ].map((stat, i) => (
