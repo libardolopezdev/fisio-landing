@@ -13,19 +13,40 @@ export default function TrustSection() {
         <section style={{ background: "#f9f9f9", padding: "64px 20px" }}>
             <div style={{ maxWidth: 1200, margin: "0 auto" }}>
 
+                {/* Stats */}
                 <Row gutter={[24, 24]} justify="center" style={{ marginBottom: 48 }}>
                     {stats.map((stat, i) => (
-                        <Col xs={8} md={6} key={i} style={{ textAlign: "center" }}>
-                            <div style={{ fontSize: 40, fontWeight: 700, color: "#4a9b6f" }}>
+                        <Col
+                            key={i}
+                            xs={24}      // ✅ móvil: una por fila
+                            sm={12}
+                            md={8}       // ✅ tablet/desktop
+                            lg={6}
+                            style={{ textAlign: "center" }}
+                        >
+                            <div
+                                style={{
+                                    fontSize: "clamp(26px, 6vw, 40px)", // ✅ responsive
+                                    fontWeight: 700,
+                                    color: "#4a9b6f"
+                                }}
+                            >
                                 {stat.number}
                             </div>
-                            <div style={{ fontSize: 14, color: "#666" }}>
+
+                            <div
+                                style={{
+                                    fontSize: "clamp(13px, 3.5vw, 14px)",
+                                    color: "#666"
+                                }}
+                            >
                                 {stat.label}
                             </div>
                         </Col>
                     ))}
                 </Row>
 
+                {/* Card */}
                 <Row justify="center">
                     <Col xs={24} md={14}>
                         <Card>
@@ -33,6 +54,7 @@ export default function TrustSection() {
                                 <Title level={3}>
                                     Atención profesional y personalizada
                                 </Title>
+
                                 <Paragraph>
                                     Soy fisioterapeuta certificada, enfocada en la recuperación funcional y el
                                     bienestar integral de cada paciente. A diferencia de la atención masiva que
@@ -41,6 +63,7 @@ export default function TrustSection() {
                                     objetivos. Los resultados hablan por sí solos, porque una recuperación
                                     verdadera comienza con atención de calidad, no con cantidad.
                                 </Paragraph>
+
                                 <Paragraph>
                                     Trabajo con técnicas basadas en evidencia para mejorar
                                     tu calidad de vida a largo plazo.
