@@ -5,9 +5,16 @@ const { Title, Paragraph } = Typography
 
 export default function Hero() {
 
+  const handleScrollToServices = () => {
+    const section = document.getElementById("services")
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
   const handleWhatsApp = () => {
     const phone = "573001234567" // ← reemplaza
-    const message = "Hola, quiero agendar una cita"
+    const message = "Hola, quiero agendar una valoración fisioterapéutica"
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`
     window.open(url, "_blank")
   }
@@ -45,7 +52,7 @@ export default function Hero() {
           paddingBottom: 48
         }}
       >
-        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
 
           <Title style={{ color: "white", marginBottom: 0 }}>
             Recupera tu movimiento
@@ -56,20 +63,43 @@ export default function Hero() {
             recuperación funcional y calidad de vida.
           </Paragraph>
 
-          <div style={{ display: "flex", justifyContent: "center" }}>
+          <div
+            style={{
+              display: "flex",
+              gap: 16,
+              justifyContent: "center",
+              flexWrap: "wrap"
+            }}
+          >
+            {/* CTA principal */}
             <Button
               type="primary"
               size="large"
+              onClick={handleWhatsApp}
               style={{
                 background: "#4a9b6f",
-                borderColor: "#4a9b6f"
+                borderColor: "#4a9b6f",
+                fontWeight: 600,
+                paddingInline: 26
               }}
-              onClick={handleWhatsApp}
             >
-              Agenda tu cita
+              Agenda por WhatsApp
             </Button>
-          </div>
 
+            {/* CTA secundario */}
+            <Button
+              size="large"
+              onClick={handleScrollToServices}
+              style={{
+                color: "white",
+                borderColor: "white",
+                background: "transparent"
+              }}
+            >
+              Ver tratamientos
+            </Button>
+
+          </div>
         </div>
       </Col>
     </Row>
