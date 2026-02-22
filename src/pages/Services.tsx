@@ -1,4 +1,5 @@
 import { Card, Col, Row, Typography, Button } from 'antd'
+import { Link } from 'react-router-dom'
 
 import rehab from "../assets/images/rehabilitacion-fisica.png"
 import preventiva from "../assets/images/fisioterapia-preventiva.png"
@@ -11,13 +12,13 @@ import depilacion from "../assets/images/depilacion-cera.png"
 const { Title, Paragraph } = Typography
 
 const services = [
-  { title: 'Rehabilitación física', img: rehab, description: 'Tratamiento especializado de lesiones osteomusculares y postquirúrgicas para recuperar tu funcionalidad y calidad de vida.' },
-  { title: 'Fisioterapia preventiva', img: preventiva, description: 'Programas diseñados para prevenir lesiones, mejorar tu postura y mantener tu salud física a largo plazo.' },
-  { title: 'Masaje descontracturante', img: masaje, description: 'Técnica terapéutica para aliviar tensiones musculares, reducir el dolor y mejorar la circulación.' },
-  { title: 'Rehabilitación de piso pélvico', img: pelvico, description: 'Atención especializada para disfunciones del suelo pélvico en hombres y mujeres, mejorando tu calidad de vida.' },
-  { title: 'Tratamiento estético', img: estetico, description: 'Limpieza facial superficial y profunda, y tratamiento con dermapen para rejuvenecimiento y cuidado de la piel.' },
-  { title: 'Cauterización de verrugas', img: cauterizacion, description: 'Eliminación segura y profesional de pequeñas verrugas mediante electrocirugía.' },
-  { title: 'Depilación con cera fría', img: depilacion, description: 'Depilación de axilas con cera fría, un método seguro, eficaz y de larga duración.' }
+  { title: 'Rehabilitación física', slug: 'rehabilitacion-fisica', img: rehab, description: 'Tratamiento especializado de lesiones osteomusculares y postquirúrgicas para recuperar tu funcionalidad y calidad de vida.' },
+  { title: 'Fisioterapia preventiva', slug: 'fisioterapia-preventiva', img: preventiva, description: 'Programas diseñados para prevenir lesiones, mejorar tu postura y mantener tu salud física a largo plazo.' },
+  { title: 'Masaje descontracturante', slug: 'masaje-descontracturante', img: masaje, description: 'Técnica terapéutica para aliviar tensiones musculares, reducir el dolor y mejorar la circulación.' },
+  { title: 'Rehabilitación de piso pélvico', slug: 'rehabilitacion-piso-pelvico', img: pelvico, description: 'Atención especializada para disfunciones del suelo pélvico en hombres y mujeres, mejorando tu calidad de vida.' },
+  { title: 'Tratamiento estético', slug: 'tratamiento-estetico', img: estetico, description: 'Limpieza facial superficial y profunda, y tratamiento con dermapen para rejuvenecimiento y cuidado de la piel.' },
+  { title: 'Cauterización de verrugas', slug: 'cauterizacion-verrugas', img: cauterizacion, description: 'Eliminación segura y profesional de pequeñas verrugas mediante electrocirugía.' },
+  { title: 'Depilación con cera fría', slug: 'depilacion-cera-fria', img: depilacion, description: 'Depilación de axilas con cera fría, un método seguro, eficaz y de larga duración.' }
 ]
 
 export default function Services() {
@@ -37,26 +38,26 @@ export default function Services() {
       <Row gutter={[24, 24]} justify="center">
         {services.map((service) => (
           <Col xs={24} md={12} lg={8} key={service.title}>
-            <Card
-              hoverable
-              style={{ height: '100%', borderRadius: 12 }}
-              cover={
-                <img
-                  src={service.img}
-                  alt={service.title}
-                  loading="lazy"
-                  style={{ height: 220, objectFit: 'cover', borderRadius: '12px 12px 0 0' }}
-                />
-              }
-            >
-              <Title level={5} style={{ marginBottom: 8 }}>{service.title}</Title>
-              <Paragraph style={{ color: '#555' }}>{service.description}</Paragraph>
-              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+            <Link to={'/servicios/' + service.slug} style={{ display: 'block', height: '100%' }}>
+              <Card
+                hoverable
+                style={{ height: '100%', borderRadius: 12 }}
+                cover={
+                  <img
+                    src={service.img}
+                    alt={service.title}
+                    loading="lazy"
+                    style={{ height: 220, objectFit: 'cover', borderRadius: '12px 12px 0 0' }}
+                  />
+                }
+              >
+                <Title level={5} style={{ marginBottom: 8 }}>{service.title}</Title>
+                <Paragraph style={{ color: '#555' }}>{service.description}</Paragraph>
                 <Button type="link" style={{ color: '#2E7D6F', paddingLeft: 0 }}>
-                  Consultar este servicio →
+                  Ver detalle →
                 </Button>
-              </a>
-            </Card>
+              </Card>
+            </Link>
           </Col>
         ))}
       </Row>
