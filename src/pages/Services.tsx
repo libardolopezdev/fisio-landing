@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 
 import { services } from '../data/services'
 import { buildWhatsAppUrl } from '../utils/whatsapp'
+import SEO from '../components/common/SEO'
 
 const { Title, Paragraph } = Typography
 
@@ -12,6 +13,11 @@ export default function Services() {
 
   return (
     <div style={{ maxWidth: 1200, margin: '0 auto', padding: '140px 20px' }}>
+      <SEO
+        title="Servicios de Fisioterapia en Medellín | Ft. Camila Suarez"
+        description="Terapia manual, rehabilitación física, piso pélvico, masaje descontracturante y fisioterapia preventiva en Medellín. Atención personalizada."
+        canonical="https://fisiocami.netlify.app/servicios"
+      />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

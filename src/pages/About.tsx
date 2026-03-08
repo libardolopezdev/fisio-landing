@@ -2,6 +2,7 @@ import { Row, Col, Typography, Card } from 'antd'
 import { CheckCircleOutlined } from '@ant-design/icons'
 import { motion } from 'framer-motion'
 import Counter from '../components/common/Counter'
+import SEO from '../components/common/SEO'
 import camilaFoto from '../assets/images/camila-sobre-mi.jpg'
 
 const { Title, Paragraph } = Typography
@@ -16,6 +17,11 @@ const certifications = [
 export default function About() {
   return (
     <div style={{ maxWidth: 1200, margin: "0 auto", padding: "140px 20px" }}>
+      <SEO
+        title="Sobre Camila Suarez - Fisioterapeuta en Medellín"
+        description="Fisioterapeuta certificada con más de 7 años de experiencia y 20.000 pacientes atendidos en Medellín. Atención personalizada y basada en evidencia."
+        canonical="https://fisiocami.netlify.app/sobre-mi"
+      />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}

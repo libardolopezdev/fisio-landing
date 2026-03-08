@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://fisiocami.netlify.app/sitemap.xml

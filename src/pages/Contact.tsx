@@ -3,6 +3,7 @@ import { PhoneOutlined, MailOutlined, EnvironmentOutlined } from '@ant-design/ic
 import { motion } from 'framer-motion'
 
 import { buildWhatsAppUrl } from '../utils/whatsapp'
+import SEO from '../components/common/SEO'
 
 const { Title, Paragraph } = Typography
 
@@ -27,6 +28,11 @@ export default function Contact() {
 
   return (
     <div style={{ maxWidth: 1200, margin: '0 auto', padding: '140px 20px' }}>
+      <SEO
+        title="Contacto y Citas | Fisioterapia Medellín - Ft. Camila Suarez"
+        description="Agenda tu cita de fisioterapia en Medellín. Atención personalizada por WhatsApp. Camila Suarez - Fisioterapeuta certificada."
+        canonical="https://fisiocami.netlify.app/contacto"
+      />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
