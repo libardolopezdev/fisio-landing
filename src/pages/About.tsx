@@ -1,5 +1,7 @@
 import { Row, Col, Typography, Card } from 'antd'
 import { CheckCircleOutlined } from '@ant-design/icons'
+import { motion } from 'framer-motion'
+import Counter from '../components/common/Counter'
 import camilaFoto from '../assets/images/camila-sobre-mi.jpg'
 
 const { Title, Paragraph } = Typography
@@ -13,16 +15,26 @@ const certifications = [
 
 export default function About() {
   return (
-    <div style={{ maxWidth: 1200, margin: "0 auto", padding: "60px 20px" }}>
+    <div style={{ maxWidth: 1200, margin: "0 auto", padding: "140px 20px" }}>
 
-      <Title level={2} style={{ textAlign: "center", marginBottom: 48 }}>
-        Sobre mí
-      </Title>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <Title level={2} style={{ textAlign: "center", marginBottom: 48 }}>
+          Sobre mí
+        </Title>
+      </motion.div>
 
       <Row gutter={[48, 48]} align="middle" style={{ marginBottom: 64 }}>
 
         <Col xs={24} md={10}>
-          <img
+          <motion.img
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
             src={camilaFoto}
             alt="Ft. Ximena Camila Suarez"
             style={{
@@ -37,7 +49,13 @@ export default function About() {
         </Col>
 
         <Col xs={24} md={14}>
-          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            style={{ display: "flex", flexDirection: "column", gap: 16 }}
+          >
             <Title level={3} style={{ color: "#2E7D6F", marginBottom: 0 }}>
               Ft. Ximena Camila Suarez Pedroza
             </Title>
@@ -64,56 +82,79 @@ export default function About() {
               ha complementado su formación con cursos especializados que le permiten
               ofrecer una atención integral y actualizada.
             </Paragraph>
-          </div>
+          </motion.div>
         </Col>
 
       </Row>
 
       <Row gutter={[24, 24]} justify="center" style={{ marginBottom: 64 }}>
         {[
-          { number: "7+", label: "Años de experiencia" },
-          { number: "20.000+", label: "Pacientes atendidos" },
-          { number: "2", label: "Universidades" },
-          { number: "4+", label: "Certificaciones" }
+          { value: 7, suffix: "+", label: "Años de experiencia" },
+          { value: 20000, suffix: "+", label: "Pacientes atendidos" },
+          { value: 2, suffix: "", label: "Universidades" },
+          { value: 4, suffix: "+", label: "Certificaciones" }
         ].map((stat, i) => (
           <Col xs={12} md={6} key={i} style={{ textAlign: "center" }}>
-            <div style={{ fontSize: 40, fontWeight: 700, color: "#2E7D6F" }}>
-              {stat.number}
-            </div>
-            <div style={{ fontSize: 14, color: "#666" }}>
-              {stat.label}
-            </div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+            >
+              <div style={{ fontSize: 40, fontWeight: 700, color: "#2E7D6F" }}>
+                <Counter value={stat.value} suffix={stat.suffix} />
+              </div>
+              <div style={{ fontSize: 14, color: "#666" }}>
+                {stat.label}
+              </div>
+            </motion.div>
           </Col>
         ))}
       </Row>
 
       <Row gutter={[24, 24]}>
         <Col xs={24} md={12}>
-          <Card style={{ borderRadius: 12, height: "100%" }}>
-            <Title level={4} style={{ color: "#2E7D6F" }}>Formación académica</Title>
-            <div style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: 16 }}>
-              <Paragraph style={{ margin: 0 }}>
-                🎓 Universidad María Cano — Fisioterapia
-              </Paragraph>
-              <Paragraph style={{ margin: 0 }}>
-                🎓 Universidad Manuela Beltrán — Especialidad en Seguridad y Salud en el Trabajo
-              </Paragraph>
-            </div>
-          </Card>
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            style={{ height: "100%" }}
+          >
+            <Card style={{ borderRadius: 12, height: "100%" }}>
+              <Title level={4} style={{ color: "#2E7D6F" }}>Formación académica</Title>
+              <div style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: 16 }}>
+                <Paragraph style={{ margin: 0 }}>
+                  🎓 Universidad María Cano — Fisioterapia
+                </Paragraph>
+                <Paragraph style={{ margin: 0 }}>
+                  🎓 Universidad Manuela Beltrán — Especialidad en Seguridad y Salud en el Trabajo
+                </Paragraph>
+              </div>
+            </Card>
+          </motion.div>
         </Col>
 
         <Col xs={24} md={12}>
-          <Card style={{ borderRadius: 12, height: "100%" }}>
-            <Title level={4} style={{ color: "#2E7D6F" }}>Certificaciones</Title>
-            <div style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: 16 }}>
-              {certifications.map((cert, i) => (
-                <div key={i} style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <CheckCircleOutlined style={{ color: "#2E7D6F", fontSize: 18 }} />
-                  <span>{cert}</span>
-                </div>
-              ))}
-            </div>
-          </Card>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            style={{ height: "100%" }}
+          >
+            <Card style={{ borderRadius: 12, height: "100%" }}>
+              <Title level={4} style={{ color: "#2E7D6F" }}>Certificaciones</Title>
+              <div style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: 16 }}>
+                {certifications.map((cert, i) => (
+                  <div key={i} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <CheckCircleOutlined style={{ color: "#2E7D6F", fontSize: 18 }} />
+                    <span>{cert}</span>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          </motion.div>
         </Col>
       </Row>
 

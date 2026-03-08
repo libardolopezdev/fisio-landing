@@ -1,7 +1,8 @@
-import { WHATSAPP_MESSAGE, WHATSAPP_NUMBER } from '../../config/contact'
+import { WHATSAPP_MESSAGE } from '../../config/contact'
+import { buildWhatsAppUrl } from '../../utils/whatsapp'
 
 export default function WhatsAppButton() {
-  const url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(WHATSAPP_MESSAGE)
+  const url = buildWhatsAppUrl(WHATSAPP_MESSAGE)
 
   return (
     <a

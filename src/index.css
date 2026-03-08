@@ -65,6 +65,42 @@ img {
   color: #6B7280;
 }
 
+/* Allow header logo to overflow below the navbar */
+.ant-layout-header {
+  overflow: visible !important;
+}
+
+/* Ant Design Menu Selected */
+.ant-menu-horizontal {
+  background: transparent !important;
+}
+
+.menu-light .ant-menu-item a,
+.menu-light .ant-menu-item span {
+  color: white !important;
+}
+
+.menu-light {
+  background: transparent !important;
+}
+
+.menu-dark .ant-menu-item a,
+.menu-dark .ant-menu-item span {
+  color: #1a2e1f !important;
+}
+
+.ant-menu-horizontal .ant-menu-item-selected a {
+  color: #a8f0c8 !important;
+}
+
+.ant-menu-horizontal>.ant-menu-item-selected {
+  color: #a8f0c8 !important;
+}
+
+.ant-menu-horizontal>.ant-menu-item-selected::after {
+  border-bottom-color: #a8f0c8 !important;
+}
+
 /* Scroll suave */
 html {
   scroll-behavior: smooth;

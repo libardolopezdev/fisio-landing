@@ -1,107 +1,198 @@
-import { Row, Col, Typography, Button } from "antd"
-import retrato from "../../assets/images/retrato-profesional.png"
+import { Col, Typography, Button, Grid } from 'antd'
+import { motion } from 'framer-motion'
+import retrato from '../../assets/images/retrato-profesional.png'
+import { buildWhatsAppUrl } from '../../utils/whatsapp'
 
 const { Title, Paragraph } = Typography
+const { useBreakpoint } = Grid
+
+const HEADER_HEIGHT = 100
 
 export default function Hero() {
+  const screens = useBreakpoint()
 
   const handleScrollToServices = () => {
-    const section = document.getElementById("services")
+    const section = document.getElementById('services')
     if (section) {
-      section.scrollIntoView({ behavior: "smooth" })
+      section.scrollIntoView({ behavior: 'smooth' })
     }
   }
 
   const handleWhatsApp = () => {
-    const phone = "573001234567" // ← reemplaza
-    const message = "Hola, quiero agendar una valoración fisioterapéutica"
-    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`
-    window.open(url, "_blank")
+    const url = buildWhatsAppUrl('Hola, quiero agendar una valoración fisioterapéutica')
+    window.open(url, '_blank', 'noopener,noreferrer')
   }
 
   return (
-    <Row
-      align="bottom"
-      justify="center"
+    <div
       style={{
-        height: "clamp(420px, 70vh, 720px)",
-        position: "relative",
-        overflow: "hidden"
+        width: '100%',
+        paddingTop: HEADER_HEIGHT,
+        background: '#f7faf9',
+        display: 'flex',
+        justifyContent: 'center',
+        paddingInline: 16,
       }}
     >
-      <img
-        src={retrato}
-        alt="Fisioterapeuta Camila Suarez"
+      {/* Card container: max-width, rounded corners, overflow hidden */}
+      <div
         style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          objectPosition: "center 10%",
-          filter: "brightness(0.6)"
-        }}
-      />
-
-      <Col
-        xs={22}
-        md={14}
-        style={{
-          zIndex: 2,
-          textAlign: "center",
-          paddingBottom: 48
+          width: '100%',
+          maxWidth: 1200,
+          height: 'clamp(660px, 90vh, 960px)',
+          position: 'relative',
+          overflow: 'hidden',
+          borderRadius: 20,
+          marginBottom: 24,
         }}
       >
-        <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+        {/* Blurred background — fills the frame */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2 }}
+          style={{
+            position: 'absolute',
+            inset: 0,
+            backgroundImage: `url(${retrato})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center 40%',
+            filter: 'blur(18px) brightness(0.6)',
+            transform: 'scale(1.05)', /* avoid blur edge artifacts */
+          }}
+        />
 
-          <Title style={{ color: "white", marginBottom: 0 }}>
-            Recupera tu movimiento
-          </Title>
+        {/* Main photo — shown full / contained */}
+        <motion.img
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          src={retrato}
+          alt="Fisioterapeuta Camila Suarez"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'contain',
+            objectPosition: 'center 40%',
+            filter: 'brightness(0.88)',
+          }}
+        />
 
-          <Paragraph style={{ color: "white", fontSize: 16 }}>
-            Atención fisioterapéutica personalizada enfocada en tu bienestar,
-            recuperación funcional y calidad de vida.
-          </Paragraph>
+        {/* Gradient overlay for text legibility */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background:
+              'linear-gradient(to top, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.1) 50%, transparent 100%)',
+          }}
+        />
 
-          <div
-            style={{
-              display: "flex",
-              gap: 16,
-              justifyContent: "center",
-              flexWrap: "wrap"
-            }}
+        {/* Text content — bottom-centred */}
+        <div
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            display: 'flex',
+            justifyContent: 'center',
+            padding: '0 24px 20px',
+          }}
+        >
+          <Col
+            xs={24}
+            sm={22}
+            md={18}
+            lg={14}
+            xl={12}
+            style={{ textAlign: 'center', color: 'white' }}
           >
-            {/* CTA principal */}
-            <Button
-              type="primary"
-              size="large"
-              onClick={handleWhatsApp}
-              style={{
-                background: "#4a9b6f",
-                borderColor: "#4a9b6f",
-                fontWeight: 600,
-                paddingInline: 26
-              }}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Agenda por WhatsApp
-            </Button>
+              <Title
+                style={{
+                  color: 'white',
+                  fontSize: screens.md ? '3rem' : '2rem',
+                  marginBottom: '1rem',
+                  fontWeight: 700,
+                  lineHeight: 1.15,
+                }}
+              >
+                Recupera tu movimiento y vive sin dolor
+              </Title>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                <Paragraph
+                  style={{
+                    color: 'rgba(255, 255, 255, 0.88)',
+                    fontSize: '1.1rem',
+                    marginBottom: '2rem',
+                    maxWidth: 520,
+                    marginInline: 'auto',
+                  }}
+                >
+                  Fisioterapia experta y personalizada en Medellín.
+                  Tratamientos basados en evidencia para que vuelvas a lo que amas.
+                </Paragraph>
+              </motion.div>
 
-            {/* CTA secundario */}
-            <Button
-              size="large"
-              onClick={handleScrollToServices}
-              style={{
-                color: "white",
-                borderColor: "white",
-                background: "transparent"
-              }}
-            >
-              Ver tratamientos
-            </Button>
-
-          </div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                style={{
+                  display: 'flex',
+                  gap: '1rem',
+                  justifyContent: 'center',
+                  flexWrap: 'wrap',
+                }}
+              >
+                <Button
+                  type="primary"
+                  size="large"
+                  onClick={handleWhatsApp}
+                  style={{
+                    height: 50,
+                    paddingInline: 28,
+                    borderRadius: 25,
+                    fontSize: '1rem',
+                    fontWeight: 600,
+                    background: '#2E7D6F',
+                    borderColor: '#2E7D6F',
+                  }}
+                >
+                  Agenda por WhatsApp
+                </Button>
+                <Button
+                  size="large"
+                  onClick={handleScrollToServices}
+                  style={{
+                    height: 50,
+                    paddingInline: 28,
+                    borderRadius: 25,
+                    fontSize: '1rem',
+                    fontWeight: 600,
+                    background: 'transparent',
+                    borderColor: 'white',
+                    color: 'white',
+                  }}
+                >
+                  Ver tratamientos
+                </Button>
+              </motion.div>
+            </motion.div>
+          </Col>
         </div>
-      </Col>
-    </Row>
+      </div>
+    </div>
   )
 }

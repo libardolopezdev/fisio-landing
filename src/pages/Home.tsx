@@ -3,7 +3,7 @@ import ServicesSection from "../components/sections/ServicesSection"
 import TrustSection from "../components/sections/TrustSection"
 import CTASection from "../components/sections/CTASection"
 import FadeInSection from "../components/common/FadeInSection"
-import TikTokSection from "../components/sections/TikTokSection"
+import SocialTipsSection from "../components/sections/SocialTipsSection"
 
 export default function Home() {
   return (
@@ -19,7 +19,7 @@ export default function Home() {
       </FadeInSection>
 
       <FadeInSection delay={0.1}>
-        <TikTokSection />
+        <SocialTipsSection />
       </FadeInSection>
 
       <FadeInSection delay={0.1}>

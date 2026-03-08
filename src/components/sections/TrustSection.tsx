@@ -1,11 +1,13 @@
 import { Row, Col, Typography, Card } from 'antd'
+import { motion } from 'framer-motion'
+import Counter from '../common/Counter'
 
-const { Title, Paragraph } = Typography
+const { Title } = Typography
 
 const stats = [
-    { number: "20.000+", label: "Pacientes atendidos" },
-    { number: "7+", label: "Años de experiencia" },
-    { number: "2", label: "Especialidades" }
+    { value: 20000, suffix: "+", label: "Pacientes atendidos" },
+    { value: 7, suffix: "+", label: "Años de experiencia" },
+    { value: 2, suffix: "", label: "Especialidades" }
 ]
 
 export default function TrustSection() {
@@ -24,24 +26,31 @@ export default function TrustSection() {
                             lg={6}
                             style={{ textAlign: "center" }}
                         >
-                            <div
-                                style={{
-                                    fontSize: "clamp(26px, 6vw, 40px)", // ✅ responsive
-                                    fontWeight: 700,
-                                    color: "#4a9b6f"
-                                }}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6, delay: i * 0.1 }}
                             >
-                                {stat.number}
-                            </div>
+                                <div
+                                    style={{
+                                        fontSize: "clamp(26px, 6vw, 40px)", // ✅ responsive
+                                        fontWeight: 700,
+                                        color: "#2E7D6F"
+                                    }}
+                                >
+                                    <Counter value={stat.value} suffix={stat.suffix} />
+                                </div>
 
-                            <div
-                                style={{
-                                    fontSize: "clamp(13px, 3.5vw, 14px)",
-                                    color: "#666"
-                                }}
-                            >
-                                {stat.label}
-                            </div>
+                                <div
+                                    style={{
+                                        fontSize: "clamp(13px, 3.5vw, 14px)",
+                                        color: "#666"
+                                    }}
+                                >
+                                    {stat.label}
+                                </div>
+                            </motion.div>
                         </Col>
                     ))}
                 </Row>
@@ -49,30 +58,28 @@ export default function TrustSection() {
                 {/* Card */}
                 <Row justify="center">
                     <Col xs={24} md={14}>
-                        <Card>
-                            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                                <Title level={3}>
-                                    Atención profesional y personalizada
-                                </Title>
+                        <motion.div
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.3 }}
+                        >
+                            <Card>
+                                <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                                    <Title level={3}>
+                                        Atención profesional y personalizada
+                                    </Title>
 
-                                <Paragraph>
-                                    Soy fisioterapeuta certificada, enfocada en la recuperación funcional y el
-                                    bienestar integral de cada paciente. A diferencia de la atención masiva que
-                                    ofrecen las EPS, donde el tiempo es limitado y los tratamientos son genéricos,
-                                    aquí cada sesión se diseña exclusivamente para ti: tu cuerpo, tu ritmo y tus
-                                    objetivos. Los resultados hablan por sí solos, porque una recuperación
-                                    verdadera comienza con atención de calidad, no con cantidad.
-                                </Paragraph>
+                                    <div style={{ fontSize: 15, color: '#4a5568', lineHeight: 1.6 }}>
+                                        <p style={{ marginBottom: 16 }}>Soy fisioterapeuta certificada, enfocada en la recuperación funcional y el bienestar integral de cada paciente. A diferencia de la atención masiva que ofrecen las EPS, donde el tiempo es limitado y los tratamientos son genéricos, aquí cada sesión se diseña exclusivamente para ti: tu cuerpo, tu ritmo y tus objetivos. Los resultados hablan por sí solos, porque una recuperación verdadera comienza con atención de calidad, no con cantidad.</p>
 
-                                <Paragraph>
-                                    Trabajo con técnicas basadas en evidencia para mejorar
-                                    tu calidad de vida a largo plazo.
-                                </Paragraph>
-                            </div>
-                        </Card>
+                                        <p>Trabajo con técnicas basadas en evidencia para mejorar tu calidad de vida a largo plazo.</p>
+                                    </div>
+                                </div>
+                            </Card>
+                        </motion.div>
                     </Col>
                 </Row>
-
             </div>
         </section>
     )
